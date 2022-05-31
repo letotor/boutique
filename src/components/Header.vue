@@ -5,8 +5,8 @@
 <template>
     <header class="px-20 d-flex  flex-row align-item-center" >
         <a href="#" class="d-flex flex-row align-items-center mr-20">
-            <img src="../assets/logo.svg" alt="logo">
-            <span class="logo">Dyma</span>
+            <img src="../assets/Logo_fusee_un_peu_penchee.png" alt="logo">
+            <span class="logo">DGweb</span>
         </a>
       
         <ul class = "d-flex flex-row align-items-center flex-fill">
@@ -19,7 +19,7 @@
         </ul>
         <ul class = "d-flex flex-row align-items-center ">
             <li class="mr-20"><a href="#">
-                Admin
+                Inscription
             </a></li>
             <li><a href="#">
                 Connexion

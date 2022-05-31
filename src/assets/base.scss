@@ -1,22 +1,20 @@
-:root{
-  --primary-1:#3498db;
-  --primary-2:#2980b9;
-  --danger-1:#e74c3c;
-  --danger-2:#c0392b;
-  --success-1:#2ecc71;
-  --success-2:#27ae60;
-  --text-color:#444;
-  --text-primary-color:#ffffff;
-  --gray-1:#f6f6f6;
-  --gray-2:#ddd;
-  --gray-3:#34495e;
+:root {
+  --primary-1: #3498db;
+  --primary-2: #2980b9;
+  --danger-1: #e74c3c;
+  --danger-2: #c0392b;
+  --success-1: #2ecc71;
+  --success-2: #27ae60;
+  --gray-1: #f6f6f6;
+  --gray-2: #ddd;
+  --gray-3: #34495e;
+  --text-color: #444;
+  --text-primary-color: #ffffff;
 
-  --border:1px sold var(var(--gray-2));
-  --border-radius:4px;
+  --border: 1px solid var(--gray-2);
+  --border-radius: 4px;
 
-
-  --font-family:'Roboto',
-    sans-serif;
+  --font-family: 'Roboto', sans-serif;
 }
 
 //RESET CSS
@@ -48,8 +46,8 @@ body{
   padding:0;
   margin: 0;
   font-family:var(--font-family);
-  color:var(--text-color);
-  background-color: var(--gray-2);
+  color:#333;//var(--text-color);
+  background-color: var(--gray-1);
 }
 
 //FLEX
@@ -119,12 +117,39 @@ body{
   margin:30px;
 }
 
+// buttons
+
+.btn {
+  padding: 8px 15px;
+  border: 0;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary-1);
+  color: var(--text-primary-color);
+  &:hover {
+    background-color: var(--primary-2);
+  }
+}
+
+.btn-danger {
+  background-color: var(--danger-1);
+  color: var(--text-primary-color);
+  &:hover {
+    background-color: var(--danger-2);
+  }
+}
+
 .app-container{
   min-height: 100vh;
   display:grid;
   grid:
   "header header" 70px
-  " cart shop"   auto
+  " shop cart"   auto
   "footer footer" 70px/
   75% 25%;
 }
@@ -136,10 +161,13 @@ body{
 .shop{
  grid-area:shop ;
 }
-.cart{
 
+.cart{
 grid-area:cart ;
+border-left: var(--border);
+background-color: white;
 }
+
 .footer{
 grid-area:footer ;
 }

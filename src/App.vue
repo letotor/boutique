@@ -9,8 +9,8 @@
 <template>
 <div class="app-container">
   <TheHeader class="header" />
-    <!-- <Cart class="shop b2" />
-    <Shop class="cart b3" /> -->
+    <Cart class="cart" />
+    <Shop class="shop" />
   <TheFooter class="footer" />
 
 </div>
