@@ -5,7 +5,7 @@
 <template>
     <header class="px-20 d-flex  flex-row align-item-center" >
         <a href="#" class="d-flex flex-row align-items-center mr-20">
-            <img src="../assets/Logo_fusee_un_peu_penchee.png" alt="logo">
+            <img src="../assets/images/Logo_fusee_un_peu_penchee.png" alt="logo">
             <span class="logo">DGweb</span>
         </a>
       
