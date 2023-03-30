@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" :class="{gridEmpty : cartEmpty}">
     <TheHeader class="header" />
    
 
@@ -8,7 +8,7 @@
       @add-product-to-cart="addProductToCart"
       class="shop"
     />
-    <Cart
+    <Cart v-if="!cartEmpty"
       :cart="state.cart"
       class="cart"
       @remove-product-from-cart="removeProductFromCart"
@@ -25,7 +25,7 @@ import Shop from "./components/Shop/Shop.vue";
 import Cart from "./components/Cart/Cart.vue";
 import data from "./data/product";
 
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import type { ProductInterface, ProductCartInterface } from "./interfaces";
 import axios from "axios";
 import { faker } from "@faker-js/faker";
@@ -39,7 +39,9 @@ const state = reactive<{
   cart: [],
 });
 
-
+const cartEmpty = computed(() => 
+  state.cart.length === 0
+)
 
 state.products.forEach((product) => {
   product.image = faker.image.abstract(640, 480, true);
@@ -96,8 +98,8 @@ const removeProductFromCart = (productId: number): void => {
 </script>
 
 <style lang="scss">
-@import "./assets/base.scss";
-@import "./assets/debug.scss";
+@import "@/assets/scss/base.scss";
+@import "@/assets/scss/debug.scss";
 
 .app-container {
   min-height: 100vh;
@@ -105,6 +107,11 @@ const removeProductFromCart = (productId: number): void => {
   grid-template-areas: "header header" "shop cart" "footer footer";
   grid-template-columns: 75% 25%;
   grid-template-rows: 48px auto 48px;
+}
+
+.gridEmpty{
+  grid-template-areas: "header " "shop" "footer ";
+  grid-template-columns: 100%;
 }
 .header {
   grid-area: header;
