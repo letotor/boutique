@@ -1,28 +1,38 @@
-<script setup lang="ts">
-import type { ProductInterface } from '@/interfaces/product.interface'
 
-
-defineProps<{
-    product: ProductInterface
-}>()
-
-
-</script>
 
 <template>
   <div class="product d-flex flex-column">
-    <div class="product-image" :style="{backgroundImage: `url(${product.image})` }"></div>
+    <div
+      class="product-image"
+      :style="{ backgroundImage: `url(${product.image})` }"
+    ></div>
     <div class="p-10 d-flex flex-column">
-      <h4>{{product.title}}</h4>
-      <p>{{product.description}}</p>
+      <h4>{{ product.title }}</h4>
+      <p>{{ product.description }}</p>
       <div class="d-flex flex-row align-items-center">
-        <strong class="flex-fill">Prix : {{product.price}}</strong>
-        <button class="btn btn-primary">Ajouter au panier</button>
+        <strong class="flex-fill">Prix : {{ product.price }}€</strong>
+        <button
+          class="btn btn-primary"
+          @click="emit('addProductToCart', product.id)"
+        >
+          Ajouter au panier
+        </button>
       </div>
     </div>
   </div>
 </template>
 
+<script setup lang="ts">
+import type { ProductInterface } from "@/interfaces";
+
+defineProps<{
+  product: ProductInterface;
+}>();
+
+const emit = defineEmits<{
+  (e: "addProductToCart", productId: number): void;
+}>();
+</script>
 <style lang="scss" scoped>
 .product {
   background-color: #ffffff;
@@ -31,7 +41,6 @@ defineProps<{
   &-image {
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
-    // background-image: url('https://media.ldlc.com/r1600/ld/products/00/05/82/01/LD0005820198_1.jpg');
     background-size: cover;
     background-position: center;
     height: 250px;

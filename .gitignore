@@ -29,3 +29,6 @@ yarn.lock
 
 # Local Netlify folder
 .netlify
+
+# ignore folder vscode and subfiles and subfolders inside
+.vscode/*

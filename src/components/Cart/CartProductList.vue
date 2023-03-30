@@ -1,17 +1,25 @@
-<script setup lang="ts">
-import CartProduct from './CartProduct.vue';
-</script>
-
 <template>
-<h1>Panier</h1>
-<div class="d-flex flex-column">
-
-    <CartProduct/>
-    <CartProduct/>
-    <CartProduct/>
-    <CartProduct/>
-</div>
+  <div class="d-flex flex-column">
+    <CartProduct
+      :key="product.id"
+      v-for="product of cart"
+      :product="product"
+      @remove-product-from-cart="emit('removeProductFromCart', $event)"
+    />
+  </div>
 </template>
 
-<style lang ="scss" scoped>
-</style>
+<script setup lang="ts">
+import CartProduct from "./CartProduct.vue";
+import type { ProductCartInterface } from "@/interfaces";
+
+const props = defineProps<{
+  cart: ProductCartInterface[];
+}>();
+
+const emit = defineEmits<{
+  (e: "removeProductFromCart", productId: number): void;
+}>();
+</script>
+
+<style lang="scss" scoped></style>

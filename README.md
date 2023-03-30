@@ -1,46 +1,23 @@
-# boutique
+# Vue3 E-commerce Store
+Project Title
+Vue3 E-commerce Store
 
-This template should help get you started developing with Vue 3 in Vite.
+# Project Description
+This project is an e-commerce store built with Vue3. It includes features such as product listings, shopping cart, and checkout process.
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+# Installation
+Clone the repository: git clone https://github.com/your-username/vue3-ecommerce-store.git
+Install dependencies: npm install
+Start the development server: npm run serve
+Usage
+After installing and running the project, you can access the e-commerce store by navigating to http://localhost:8080/ in your web browser.
 
-## Type Support for `.vue` Imports in TS
+# Contributing
+Contributions are welcome! If you find a bug or want to suggest a new feature, please create an issue on GitHub. If you want to contribute code, please fork the repository and submit a pull request.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+# License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+# Credits
+This project was built by Your Name. Special thanks to Vue.js for making it easy to build powerful web applications.

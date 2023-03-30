@@ -1,21 +1,33 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-<div class="mb-10 p-10 d-flex d-flex-row align-items-center product">
-    <strong class="flex-fill mr-10">Macbook Pro</strong>
-    <!-- <span class="mr-10">x 1</span> -->
-    <span  class="mr-10">Prix : 1500€</span>
-    <button class="btn btn-danger ">supprimer</button>
-</div>
+  <div class="mb-10 p-10 d-flex flex-row align-items-center product">
+    <strong class="mr-10">{{ product.title }}</strong>
+    <span class="flex-fill mr-10">X{{ product.quantity }}</span>
+    <span class="mr-10">Prix : {{ product.price }}€</span>
+    <button
+      class="btn btn-danger"
+      @click="emit('removeProductFromCart', product.id)"
+    >
+      Supprimer
+    </button>
+  </div>
 </template>
 
-<style lang ="scss" scoped>
-.product{
-    background-color: var(--gray-1);
-    border: var(--border);
-    border-radius:var(--border-radius);
-}
+<script setup lang="ts">
+import type { ProductCartInterface } from "@/interfaces";
 
+defineProps<{
+  product: ProductCartInterface;
+}>();
+
+const emit = defineEmits<{
+  (e: "removeProductFromCart", productId: number): void;
+}>();
+</script>
+
+<style lang="scss" scoped>
+.product {
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--gray-1);
+}
 </style>
