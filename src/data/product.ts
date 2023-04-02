@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { ProductInterface, } from "../interfaces";
 
 export default [
   {
@@ -8,6 +9,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 1500,
+    category: "laptop",
   },
   {
     id: 2,
@@ -16,6 +18,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 2300,
+    category: "laptop",
   },
   {
     id: 3,
@@ -24,6 +27,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 1200,
+        category: "laptop",
   },
   {
     id: 4,
@@ -32,6 +36,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 4500,
+        category: "laptop",
   },
   {
     id: 5,
@@ -40,6 +45,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 3755,
+        category: "laptop",
   },
   {
     id: 6,
@@ -48,6 +54,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 2452,
+        category: "laptop",
   },
   {
     id: 7,
@@ -56,6 +63,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 1478,
+        category: "laptop",
   },
   {
     id: 8,
@@ -64,5 +72,6 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 899,
+        category: "laptop",
   },
-];
+] as ProductInterface[];

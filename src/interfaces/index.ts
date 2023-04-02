@@ -1,4 +1,4 @@
-export * from './filter.interface';
+export * from './Filter.interface';
 export * from './prod.interface';
 export * from './user.interface';
 export * from './Product.interface';
