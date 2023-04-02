@@ -1,14 +1,14 @@
 import { faker } from "@faker-js/faker";
-import { ProductInterface, } from "../interfaces";
+import { Product } from "../interfaces";
 
 export default [
   {
     id: 1,
-    image: "src/assets/images/MacBookPro-mit-M1-scaled.webp",
     title: "Macbook Pro",
+    image: "src/assets/images/MacBookPro-mit-M1-scaled.webp",
+    price: 1500,
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
-    price: 1500,
     category: "laptop",
   },
   {
@@ -18,7 +18,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 2300,
-    category: "laptop",
+    category: "all",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 1200,
-        category: "laptop",
+    category: "laptop",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 4500,
-        category: "laptop",
+    category: "laptop",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 3755,
-        category: "laptop",
+    category: "laptop",
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 2452,
-        category: "laptop",
+    category: "laptop",
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 1478,
-        category: "laptop",
+    category: "laptop",
   },
   {
     id: 8,
@@ -72,6 +72,6 @@ export default [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis",
     price: 899,
-        category: "laptop",
+    category: "laptop",
   },
-] as ProductInterface[];
+] as Product[];

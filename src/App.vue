@@ -3,7 +3,7 @@
     <TheHeader class="header" />
 
 
-    <Shop :products="state.products" @add-product-to-cart="addProductToCart" class="shop" />
+    <Shop @update-filter="updateFilter" :products="filteredProducts" @add-product-to-cart="addProductToCart" class="shop" />
     <Cart v-if="!cartEmpty" :cart="state.cart" class="cart" @remove-product-from-cart="removeProductFromCart" />
 
     <TheFooter class="footer" />
@@ -17,21 +17,25 @@ import Shop from "./components/Shop/Shop.vue";
 import Cart from "./components/Cart/Cart.vue";
 import data from "./data/product";
 import { computed, reactive } from "vue";
-import type { ProductInterface, ProductCartInterface, FilterInterface } from "./interfaces";
 
-import { DEFAUlT_FILTERS } from "./data/filters";
+
+import { DEFAUlT_FILTERS as DEFAULT_FILTERS } from "./data/filters";
 import axios from "axios";
 import { faker } from "@faker-js/faker";
+import { Product } from "./interfaces";
+import { ProductCart } from "./interfaces";
+import { Filter,FilterUpdate } from "./interfaces/Filter.interface";
 
 const state = reactive<{
-  products: ProductInterface[];
-  cart: ProductCartInterface[];
-  filters: FilterInterface;
+  products: Product[];
+  cart: ProductCart[];
+  filters: Filter;
 }>({
   // products: data,
   products: data,
   cart: [],
-  filters: DEFAUlT_FILTERS,
+  // on cree une copy de default filters pour ne pas modifier la constante puisque filter est une reference object et non une copie donc si on modifie filter on modifie aussi DEFAULT_FILTERS et on ne veut pas ca
+  filters: { ...DEFAULT_FILTERS },
 
 });
 
@@ -39,8 +43,44 @@ const cartEmpty = computed(() =>
   state.cart.length === 0
 )
 
-state.products.forEach((product) => {
-  product.image = faker.image.abstract(640, 480, true);
+const filteredProducts = computed(()=>
+  state.products.filter((product) => {
+    if ( product.title.toLowerCase().startsWith(state.filters.search.toLowerCase())
+    && product.price >= state.filters.priceRange[0]
+    && product.price <= state.filters.priceRange[1]
+    && product.category === state.filters.category || state.filters.category === "all"
+    ) {
+      return true;
+    }
+    else{
+      return false;}
+
+  })
+)
+
+
+/**
+ * Update filters with a filter update object (search, priceRange, category)
+ * Update filters
+ * @param filterUpdate - Filter update object (search, priceRange, category)
+ */
+const updateFilter = (filterUpdate: FilterUpdate): void => {
+    if(filterUpdate.search!==undefined){
+      state.filters.search = filterUpdate.search;
+    }else if(filterUpdate.priceRange){
+      state.filters.priceRange = filterUpdate.priceRange;
+    }else if(filterUpdate.category){
+      state.filters.category = filterUpdate.category;
+    }else{
+      state.filters = { ...DEFAULT_FILTERS };
+    }
+};
+
+state.products.forEach((product,index) => {
+
+
+  product.image ="https://picsum.photos/200/300?random=1"
+  
 
 
 });
@@ -94,8 +134,9 @@ const removeProductFromCart = (productId: number): void => {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/base.scss";
-@import "@/assets/scss/debug.scss";
+@import "./assets/scss/base.scss";
+@import "./assets/scss/debug.scss";
+
 
 .app-container {
   min-height: 100vh;

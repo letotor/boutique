@@ -1,10 +1,9 @@
-import { Category } from "./Filter.interface";
 
-export interface ProductInterface {
+export interface Product {
   id: number;
   title: string;
   image: string;
   price: number;
   description: string;
-  category: Category;
+  category: "all" | "laptop" | "desktop" | "accessories";
 }

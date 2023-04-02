@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductInterface } from "@/interfaces";
+import type { ProductInterface } from "../../interfaces";
 import ShopProduct from "./ShopProduct.vue";
 
 defineProps<{

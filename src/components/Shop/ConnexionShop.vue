@@ -85,16 +85,16 @@ import { watchEffect, reactive, ref, toRefs, pushScopeId } from "vue";
 import axios from "axios";
 import { faker } from "@faker-js/faker";
 
-import type { ProdInterface } from "@/interfaces/prod.interface";
-import type { UserInterface } from "@/interfaces/user.interface";
-import type { FilterInterface } from "@/interfaces/filter.interface";
+import type { ProdInterface } from "../../interfaces/prod.interface";
+import type { UserInterface } from "../../interfaces/user.interface";
+import type { FilterInterface } from "../../interfaces/Filter.interface";
 import { computed } from "@vue/reactivity";
 // const props = defineProps<{
 //   cart: ProductInterface[];
 // }>();
 // const produits = ref<ProdInterface[]>([]);
 
-const state = reactive<FilterInterface>({
+const state = reactive<any>({
   filterCategorie: false,
   filterPrice: false,
   filterTitle: false,

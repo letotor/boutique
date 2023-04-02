@@ -1,8 +1,11 @@
-export type Category = "all" | "laptop" | "desktop" | "accessories";
-
-export interface FilterInterface {
+export interface Filter {
   search: string;
   priceRange: [number, number];
-  category: Category 
-  ;
+  category: "all" | "laptop" | "desktop" | "accessories";
+}
+
+export interface FilterUpdate {
+  search?: string;
+  priceRange?: [number, number];
+  category?: "all" | "laptop" | "desktop" | "accessories";
 }

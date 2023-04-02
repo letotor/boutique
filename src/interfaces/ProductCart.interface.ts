@@ -1,6 +1,6 @@
-import type { ProductInterface } from "./Product.interface";
+import type { Product } from "./Product.interface";
 
-export interface ProductCartInterface extends ProductInterface {
+export interface ProductCart extends Product {
     quantity: number;
 }
 
