@@ -36,7 +36,7 @@ export default [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing edolor tempore ipsam cum ipsum reiciendis',
     price: 4500,
-    category: 'laptop',
+    category: 'desktop',
   },
   {
     id: 5,

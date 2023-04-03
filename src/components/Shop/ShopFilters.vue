@@ -63,30 +63,22 @@
     </section>
 
     <section>
-
-      
-    </section>
-    <!-- 
-      <h3 class="">Categorie</h3>
-      <select
-        @change="
-          emit('updateFilter', {
-            category: ($event.target as HTMLInputElement).value,
-          })
-        "
-        :value="filters.category"
-        class="mt-20"
+      <h3 class="mb-10">Categorie</h3>
+      <p
+        v-for="category in ([ 'all','desktop','laptop','accessories'] as Category[])"
+        :key="category!"
+        @click="emit('updateFilter', { category })"
+        class="mt-20 category"
+        :class="{ selected: category === filters.category }"
       >
-        <option value="all">Toutes</option>
-        <option value="furniture">Meubles</option>
-        <option value="decoration">Décoration</option>
-        <option value="lighting">Eclairage</option> 
-      </section>
-      </select> -->
+        {{ category }}
+      </p>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Category } from '../../interfaces';
 import type {
   FiltersInterface,
   FilterUpdate,
@@ -101,4 +93,20 @@ const emit = defineEmits<{
 }>();
 </script>
 
-<style scoped style="scss"></style>
+<style style="scss" scoped>
+.category {
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 5px;
+  background-color: var(--gray-1);
+  transition: background-color 0.2s ease;
+}
+.category.selected {
+  background-color: var(--gray-2);
+  text-decoration: underline;
+  font-weight: bold;
+}
+</style>

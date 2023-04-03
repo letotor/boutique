@@ -1,7 +1,7 @@
 <template>
   <div class="mb-10 p-10 d-flex flex-row align-items-center product">
     <strong class="mr-10">{{ product.title }}</strong>
-    <span class="flex-fill mr-10">X{{ product.quantity }}</span>
+    <span class="flex-fill mr-10 quantity">x{{ product.quantity }}</span>
     <span class="mr-10">Prix : {{ product.price }}€</span>
     <button
       class="btn btn-danger"
@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductCartInterface } from '@/interfaces';
+import type { ProductCartInterface } from '../../interfaces';
 
 defineProps<{
   product: ProductCartInterface;
@@ -29,5 +29,9 @@ const emit = defineEmits<{
   border: var(--border);
   border-radius: var(--border-radius);
   background-color: var(--gray-1);
+  .quantity {
+    color: var(--gray-4);
+    text-emphasis-color: var(--gray-4);
+  }
 }
 </style>
