@@ -14,24 +14,26 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue';
 import ShopProductList from './ShopProductList.vue';
-import ConnexionShop from './ConnexionShop.vue';
 import {
   FilterUpdate,
-  FilterInterface,
+  FiltersInterface,
 } from '../../interfaces/Filter.interface';
-import { Product } from '../../interfaces';
+import type { ProductInterface } from '../../interfaces';
 import ShopFilters from './ShopFilters.vue';
 
 defineProps<{
-  products: Product[];
-  filters: FilterInterface;
+  products: ProductInterface[];
+  filters: FiltersInterface;
 }>();
 
 const emit = defineEmits<{
   (e: 'addProductToCart', productId: number): void;
   (e: 'updateFilter', updateFilter: FilterUpdate): void;
 }>();
+
+// console.log('Shop', emit.toString);
 </script>
 
 <style lang="scss" scoped>

@@ -81,13 +81,12 @@
 </template>
 
 <script setup lang="ts">
-import { watchEffect, reactive, ref, toRefs, pushScopeId } from 'vue';
+import { watchEffect, reactive, ref } from 'vue';
 import axios from 'axios';
 import { faker } from '@faker-js/faker';
 
 import type { ProdInterface } from '../../interfaces/prod.interface';
 import type { UserInterface } from '../../interfaces/user.interface';
-import type { FilterInterface } from '../../interfaces/Filter.interface';
 import { computed } from '@vue/reactivity';
 // const props = defineProps<{
 //   cart: ProductInterface[];
@@ -175,6 +174,7 @@ watchEffect(async () => {
     filterProduits.push(...result);
     // console.log(result);
     console.log('data', result);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (erreur: Error | any) {
     error.value = erreur.message;
   }
@@ -199,9 +199,12 @@ const filtered = computed(() => {
       state.filterPrice = false;
       state.filterId = false;
       state.filterTitle = false;
+
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
-        // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a['category']! > b['category']! ? 1 : -1;
+        if (a['category'] && b['category']) {
+          return a['category'] > b['category'] ? 1 : -1;
+        }
+        return 0;
       });
     }
 
@@ -210,8 +213,10 @@ const filtered = computed(() => {
       state.filterId = false;
       state.filterTitle = false;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
-        // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a['price']! > b['price']! ? 1 : -1;
+        if (a['price'] && b['price']) {
+          return a['price'] > b['price'] ? 1 : -1;
+        }
+        return 0;
       });
     }
 
@@ -222,7 +227,10 @@ const filtered = computed(() => {
       // state.filterTitle = !state.filterTitle;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
         // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a['title']! > b['title']! ? 1 : -1;
+        if (a['title'] && b['title']) {
+          return a['title'] > b['title'] ? 1 : -1;
+        }
+        return 0;
       });
     }
     if (state.filterId) {
@@ -232,7 +240,10 @@ const filtered = computed(() => {
       // state.filterId = !state.filterId;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
         // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a['id']! > b['id']! ? 1 : -1;
+        if (a['id'] && b['id']) {
+          return a['id'] > b['id'] ? 1 : -1;
+        }
+        return 0;
       });
     }
   }

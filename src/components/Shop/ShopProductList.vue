@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '../../interfaces';
+import type { ProductInterface } from '../../interfaces';
 import ShopProduct from './ShopProduct.vue';
 
 defineProps<{
-  products: Product[];
+  products: ProductInterface[];
 }>();
 
 const emit = defineEmits<{

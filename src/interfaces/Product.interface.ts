@@ -1,4 +1,4 @@
-export type Category = 'all' | 'laptop' | 'desktop' | 'accessories';
+export type Category = 'all' | 'laptop' | 'desktop' | 'accessories' | null;
 export interface ProductInterface {
   id: number;
   title: string;

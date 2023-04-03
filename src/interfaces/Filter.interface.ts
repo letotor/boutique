@@ -1,4 +1,4 @@
-export interface FilterInterface {
+export interface FiltersInterface {
   search: string;
   priceRange: [number, number];
   category: 'all' | 'laptop' | 'desktop' | 'accessories';
