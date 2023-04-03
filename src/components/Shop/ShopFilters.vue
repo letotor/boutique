@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10">
+  <div class="p-10 d-flex flex-column">
     <section class="mb-20">
       <h3 class="mb-10">Recherche</h3>
       <!-- icic on renvoie un objet avec la cle search et la valeur de l'input -->
@@ -62,7 +62,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="mb-20 flex-fill">
       <h3 class="mb-10">Categorie</h3>
       <p
         v-for="category in ([ 'all','desktop','laptop','accessories'] as Category[])"
@@ -74,6 +74,12 @@
         {{ category }}
       </p>
     </section>
+    <small class="text-muted">
+      Nombre de resultats <strong>{{ nbrOfResults }}</strong></small
+    >
+    <button @click="emit('updateFilter', {})" class="btn btn-danger mt-20">
+      Supprimer les filtres
+    </button>
   </div>
 </template>
 
@@ -86,6 +92,7 @@ import type {
 
 defineProps<{
   filters: FiltersInterface;
+  nbrOfResults: number;
 }>();
 
 const emit = defineEmits<{

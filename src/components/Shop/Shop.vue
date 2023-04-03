@@ -2,6 +2,7 @@
   <div class="d-flex flex-row">
     <ShopFilters
       :filters="filters"
+      :nbr-of-results="products.length"
       @update-filter="emit('updateFilter', $event)"
       class="shop-filter m-20"
     />
