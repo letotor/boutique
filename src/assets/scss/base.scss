@@ -87,8 +87,24 @@ input {
   padding: 10px;
 }
 
+.p-15 {
+  padding: 15px;
+}
+
 .p-20 {
   padding: 20px;
+}
+
+.p-25 {
+  padding: 25px;
+}
+
+.p-30 {
+  padding: 30px;
+}
+
+.p-35 {
+  padding: 35px;
 }
 
 .px-20 {
@@ -96,27 +112,37 @@ input {
   padding-right: 20px;
 }
 
-.p-30 {
-  padding: 30px;
+.px-25 {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.m-5 {
+  margin: 5px;
 }
 
 .m-10 {
   margin: 10px;
 }
 
-.mb-10 {
-  margin-bottom: 10px;
-}
-.mb-20 {
-  margin-bottom: 20px;
+.m-15 {
+  margin: 15px;
 }
 
-.mt-10 {
-  margin-top: 10px;
+.m-20 {
+  margin: 20px;
 }
 
-.mt-20 {
-  margin-top: 20px;
+.m-25 {
+  margin: 25px;
+}
+
+.m-30 {
+  margin: 30px;
+}
+
+.mr-5 {
+  margin-right: 5px;
 }
 
 .mr-10 {
@@ -127,12 +153,43 @@ input {
   margin-right: 20px;
 }
 
-.m-20 {
-  margin: 20px;
+.mt-5 {
+  margin-top: 5px;
 }
 
-.m-30 {
-  margin: 30px;
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.my-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.my-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.my-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 // buttons

@@ -94,7 +94,6 @@ const removeProductFromCart = (productId: number): void => {
  * @param filterUpdate - Filter update object (search, priceRange, category)
  */
 const updateFilter = (filterUpdate: FilterUpdate): void => {
-
   displayTest.value = filterUpdate.search!;
   if (filterUpdate.search !== undefined) {
     state.filters.search = filterUpdate.search;
