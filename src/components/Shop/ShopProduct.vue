@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="product d-flex flex-column">
     <div
@@ -23,14 +21,14 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductInterface } from "../../interfaces";
+import type { ProductInterface } from '../../interfaces';
 
 defineProps<{
   product: ProductInterface;
 }>();
 
 const emit = defineEmits<{
-  (e: "addProductToCart", productId: number): void;
+  (e: 'addProductToCart', productId: number): void;
 }>();
 </script>
 <style lang="scss" scoped>

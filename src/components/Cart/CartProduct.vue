@@ -13,14 +13,14 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductCartInterface } from "@/interfaces";
+import type { ProductCartInterface } from '@/interfaces';
 
 defineProps<{
   product: ProductCartInterface;
 }>();
 
 const emit = defineEmits<{
-  (e: "removeProductFromCart", productId: number): void;
+  (e: 'removeProductFromCart', productId: number): void;
 }>();
 </script>
 

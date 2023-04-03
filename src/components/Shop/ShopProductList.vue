@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="grid p-20">
     <ShopProduct
@@ -12,15 +10,15 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductInterface } from "../../interfaces";
-import ShopProduct from "./ShopProduct.vue";
+import type { Product } from '../../interfaces';
+import ShopProduct from './ShopProduct.vue';
 
 defineProps<{
-  products: ProductInterface[];
+  products: Product[];
 }>();
 
 const emit = defineEmits<{
-  (e: "addProductToCart", productId: number): void;
+  (e: 'addProductToCart', productId: number): void;
 }>();
 </script>
 

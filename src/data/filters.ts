@@ -1,8 +1,7 @@
-import { Filter } from '../interfaces/Filter.interface';
+import { FilterInterface } from '../interfaces/Filter.interface';
 
-
-export const DEFAUlT_FILTERS: Filter = {
-    search: "",
-    priceRange: [0, 10000],
-    category: "all",
+export const DEFAUlT_FILTERS: FilterInterface = {
+  search: '',
+  priceRange: [0, 10000],
+  category: 'all',
 };

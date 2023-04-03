@@ -36,14 +36,14 @@
           trie produit par id
         </button>
       </div>
-      {{ JSON.stringify("1") }}
+      {{ JSON.stringify('1') }}
       <!-- {{JSON.stringify(filtered)}} -->
       <div class="produit-container">
         <div class="produit" v-for="(produit, index) in filtered" :key="index">
           <img :src="produit.image!" alt="test" />
 
           <div class="description">
-            <p>{{produit.id as number}}</p>
+            <p>{{ produit.id as number }}</p>
             <h2>{{ produit.title }}</h2>
             <p class="price">{{ produit.price }} €</p>
             <p>{{ produit.description }}</p>
@@ -81,14 +81,14 @@
 </template>
 
 <script setup lang="ts">
-import { watchEffect, reactive, ref, toRefs, pushScopeId } from "vue";
-import axios from "axios";
-import { faker } from "@faker-js/faker";
+import { watchEffect, reactive, ref, toRefs, pushScopeId } from 'vue';
+import axios from 'axios';
+import { faker } from '@faker-js/faker';
 
-import type { ProdInterface } from "../../interfaces/prod.interface";
-import type { UserInterface } from "../../interfaces/user.interface";
-import type { FilterInterface } from "../../interfaces/Filter.interface";
-import { computed } from "@vue/reactivity";
+import type { ProdInterface } from '../../interfaces/prod.interface';
+import type { UserInterface } from '../../interfaces/user.interface';
+import type { FilterInterface } from '../../interfaces/Filter.interface';
+import { computed } from '@vue/reactivity';
 // const props = defineProps<{
 //   cart: ProductInterface[];
 // }>();
@@ -116,21 +116,21 @@ const users = reactive<UserInterface[]>([
   },
 ]);
 
-console.log("2");
+console.log('2');
 
 const setFilter = (filter: string) => {
-  console.log("3");
-  filter == "category" && (state.filterCategorie = !state.filterCategorie);
-  filter == "price" && (state.filterPrice = !state.filterPrice);
-  filter == "title" && (state.filterTitle = !state.filterTitle);
-  filter == "id" && (state.filterId = !state.filterId);
+  console.log('3');
+  filter == 'category' && (state.filterCategorie = !state.filterCategorie);
+  filter == 'price' && (state.filterPrice = !state.filterPrice);
+  filter == 'title' && (state.filterTitle = !state.filterTitle);
+  filter == 'id' && (state.filterId = !state.filterId);
   console.log(filter);
   console.log(state);
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const emit = defineEmits<{
-  (e: "removeProductFromCart", productId: number): void;
+  (e: 'removeProductFromCart', productId: number): void;
 }>();
 
 const createRandomUser = (): UserInterface => {
@@ -152,12 +152,12 @@ Array.from({ length: 30 }).forEach(() => {
 // console.log("users", users);
 
 const getData = async () => {
-  console.log("4");
+  console.log('4');
   try {
     const response = await (
-      await axios.get("https://fakestoreapi.com/products/")
+      await axios.get('https://fakestoreapi.com/products/')
     ).data;
-    console.log("response", response);
+    console.log('response', response);
     // produit.push(...response);
     return response;
   } catch (error) {
@@ -166,15 +166,15 @@ const getData = async () => {
 
   // console.log(response.data);
 };
-console.log("5");
+console.log('5');
 watchEffect(async () => {
-  console.log("6");
+  console.log('6');
   try {
     const result = await getData();
     produits.push(...result); // to reactive array
     filterProduits.push(...result);
     // console.log(result);
-    console.log("data", result);
+    console.log('data', result);
   } catch (erreur: Error | any) {
     error.value = erreur.message;
   }
@@ -186,7 +186,7 @@ const filterReset = (): void => {
 };
 
 const filtered = computed(() => {
-  console.log("filterProduits", state, filterProduits);
+  console.log('filterProduits', state, filterProduits);
   if (
     !state.filterCategorie &&
     !state.filterPrice &&
@@ -201,7 +201,7 @@ const filtered = computed(() => {
       state.filterTitle = false;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
         // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a["category"]! > b["category"]! ? 1 : -1;
+        return a['category']! > b['category']! ? 1 : -1;
       });
     }
 
@@ -211,7 +211,7 @@ const filtered = computed(() => {
       state.filterTitle = false;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
         // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a["price"]! > b["price"]! ? 1 : -1;
+        return a['price']! > b['price']! ? 1 : -1;
       });
     }
 
@@ -222,7 +222,7 @@ const filtered = computed(() => {
       // state.filterTitle = !state.filterTitle;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
         // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a["title"]! > b["title"]! ? 1 : -1;
+        return a['title']! > b['title']! ? 1 : -1;
       });
     }
     if (state.filterId) {
@@ -232,19 +232,19 @@ const filtered = computed(() => {
       // state.filterId = !state.filterId;
       filterProduits.sort((a: ProdInterface, b: ProdInterface) => {
         // console.log("a", Object.keys(a),typefilter,a[typefilter]);
-        return a["id"]! > b["id"]! ? 1 : -1;
+        return a['id']! > b['id']! ? 1 : -1;
       });
     }
   }
   return filterProduits;
 });
 
-console.log("7");
+console.log('7');
 
 const deleteUser = (userId: string): void => {
   users.splice(
     users.findIndex((user) => user.userId === userId),
-    1
+    1,
   );
 };
 </script>

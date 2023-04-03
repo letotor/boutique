@@ -1,37 +1,45 @@
-# roadmap project to the e shop store in vue3  
-  
-# Phase 1: Basic functionality (Month 1)    
- []: Set up project structure and initial configuration    
+# roadmap project to the e shop store in vue3
+
+# Phase 1: Basic functionality (Month 1)
+
+[]: Set up project structure and initial configuration  
  []: Create product listings page  
  []: Implement shopping cart functionality  
  []: Implement checkout process  
- []: Add basic styling to pages  
-#  Phase 2: Advanced features (Month 2)  
+ []: Add basic styling to pages
+
+# Phase 2: Advanced features (Month 2)
+
 []: Implement product search functionality  
 []: Add product filtering and sorting options  
 []: Implement user authentication and account management  
 []: Integrate payment gateway for online payments  
-[]: Add support for multiple languages  
-#  Phase 3: Testing and optimization (Month 3)  
+[]: Add support for multiple languages
+
+# Phase 3: Testing and optimization (Month 3)
+
 []: Write unit tests for all components and functions  
 []: Implement performance optimizations for faster page load times  
 []: Test for compatibility across multiple browsers and devices  
-[]: Conduct user testing and gather feedback for improvements  
-#  Phase 4: Additional features (Month 4)  
+[]: Conduct user testing and gather feedback for improvements
+
+# Phase 4: Additional features (Month 4)
+
 []: Implement product recommendations and related products features  
 []: Add product reviews and ratings functionality  
 []: Implement wish list and save for later options  
 []: Integrate social media sharing and promotion features
 
+# Phase 1: Basic functionality (Month 1)
 
-# Phase 1: Basic functionality (Month 1) 
-    []:Project setup and configuration  
+    []:Project setup and configuration
     []:Create basic page layout and components
     []:Implement routing and navigation between pages
     []:Add basic styling and responsiveness to pages
     []:Create initial components for user authentication and authorization
 
-#  Phase 2: Advanced features (Month 2)
+# Phase 2: Advanced features (Month 2)
+
     []:Implement user authentication and authorization
         1- Implement a mechanism to authenticate user credentials, such as a back-end API or a third-party authentication service like OAuth. - 1-2 days
         2- Upon successful authentication, store the user's access token or session token in a state management tool, such as VueX or a cookie. - 1-2 days
@@ -51,23 +59,23 @@
         7- Add error handling to display error messages if there are any issues with updating the user's profile or account settings. - 1-2 days
         8-Add confirmation messages or notifications to inform the user when their changes have been successfully saved. - 1-2 days
 
-        
+
     []:Implement search and filtering functionality
     []:Add support for multiple languages
     []:Implement integration with external APIs
 
-#  Phase 3: Testing and optimization (Month 3)
+# Phase 3: Testing and optimization (Month 3)
+
     []:Write unit tests for all components and functions
     []:Implement performance optimizations for faster page load times
     []:Test for compatibility across multiple browsers and devices
     []:Conduct user testing and gather feedback for improvements
     []:Implement analytics and monitoring for performance tracking
 
-#  Phase 4: Additional features (Month 4)
+# Phase 4: Additional features (Month 4)
+
     []:Implement social media sharing and promotion features
     []:Create components for user-generated content, such as reviews or comments
     []:Add support for notifications and messaging
     []:Create components for subscriptions and payment management
     []:Implement support for third-party integrations and plugins
-
-
