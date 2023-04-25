@@ -2,7 +2,6 @@
   <div class="app-container" :class="{ gridEmpty: cartEmpty }">
     <TheHeader class="header" />
 
-    <p @update-filter="updateFilter">test :{{ displayTest }}</p>
     <Shop
       class="shop"
       @update-filter="updateFilter"
