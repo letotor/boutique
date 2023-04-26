@@ -17,7 +17,7 @@ import TheHeader from './components/HeaderHome.vue';
 import TheFooter from './components/FooterHome.vue';
 import Boutique from './features/boutique/Boutique.vue';
 import Admin from './features/admin/Admin.vue';
-import type { Component as C} from 'vue';
+import type { Component as C } from 'vue';
 import type { Page } from './interfaces';
 
 const state = reactive<{ page: Page }>({
@@ -32,6 +32,7 @@ const pages: { [key: string]: C } = {
 function navigate(page: Page): void {
   state.page = page;
 }
+
 </script>
 
 <style lang="scss">

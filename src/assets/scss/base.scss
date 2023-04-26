@@ -54,10 +54,23 @@ body {
   background-color: var(--gray-1);
 }
 
-input {
+input,textarea,select {
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 8px 15px;
+}
+
+label{
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--gray-3);
+}
+
+.form-error{
+  color: var(--danger-1);
+  font-size: 12px;
+  font-weight: 500;
+  padding-top: 10px;
 }
 
 //FLEX
@@ -232,7 +245,7 @@ input {
   background-color: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   padding: 30px;
-  height: 200px;
+  height: auto;
   overflow: hidden;
 }
 
