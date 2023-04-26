@@ -1,9 +1,17 @@
 <template>
-  <div>
-    <h1>Panel admin</h1>
+  <div
+    class="admin-container d-flex flex-row justify-content-center align-items-center"
+  >
+    <ProductForm />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ProductForm from './components/ProductForm.vue';
+</script>
 
-<style scoped></style>
+<style scoped>
+.admin-container {
+  height: 100%;
+}
+</style>

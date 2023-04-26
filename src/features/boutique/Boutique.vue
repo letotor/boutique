@@ -132,7 +132,7 @@ state.products.forEach((product, index) => {
 // }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .boutique-container {
   display: grid;
   grid-template-areas: 'shop cart';

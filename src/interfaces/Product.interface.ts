@@ -1,4 +1,4 @@
-export type Category = 'all' | 'laptop' | 'desktop' | 'accessories' | undefined;
+import type { Category } from './type';
 export interface ProductInterface {
   id: number;
   title: string;
