@@ -4,7 +4,12 @@
     <form @submit="trySubmit" action.preventDefault="#">
       <div class="d-flex flex-column mb-20">
         <label class="mb-5" for="title">*Titre</label>
-        <input type="text" id="title" v-model="title.value.value" />
+        <input
+          ref="firstInput"
+          type="text"
+          id="title"
+          v-model="title.value.value"
+        />
         <small class="form-error" v-if="title.errorMessage.value">
           {{ title.errorMessage.value }}
         </small>
@@ -25,7 +30,7 @@
       </div>
       <div class="d-flex flex-column mb-20">
         <label class="mb-5" for="description">Description</label>
-        <textArea
+        <textarea
           type="text"
           id="description"
           v-model="description.value.value"
@@ -63,7 +68,14 @@ import { toTypedSchema } from '@vee-validate/zod';
 import { z } from 'zod';
 import { useForm, useField } from 'vee-validate';
 import { useFormValues } from 'vee-validate';
-import { Ref } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
+
+const firstInput = ref<HTMLInputElement | null>(null);
+
+onMounted(() => {
+  firstInput.value?.focus();
+  console.info('firstInput', firstInput);
+});
 
 const required = { required_error: 'Veuillez renseigner ce champ' };
 const validationSchema = toTypedSchema(
@@ -99,7 +111,29 @@ const price = useField('price');
 const description = useField('description');
 const category = useField('category');
 
-const trySubmit = handleSubmit((formValues: any) => console.log(formValues));
+watchEffect(() => {
+  console.log('title', title.value);
+  console.log('image', image.value);
+  console.log('price', price.value);
+  console.log('description', description.value);
+  console.log('category', category.value);
+});
+const trySubmit = handleSubmit(async (formValues: any, { resetForm }) => {
+  try {
+    await fetch('https://restapi.fr/api/vuetestproducts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formValues),
+    });
+    resetForm();
+    firstInput.value?.focus();
+  } catch (error) {
+    console.error('error', formValues);
+    console.error('error', error);
+  }
+});
 </script>
 
 <style scoped lang="scss">

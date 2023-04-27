@@ -17,6 +17,7 @@ import TheHeader from './components/HeaderHome.vue';
 import TheFooter from './components/FooterHome.vue';
 import Boutique from './features/boutique/Boutique.vue';
 import Admin from './features/admin/Admin.vue';
+import { seed } from './features/boutique/data/seed';
 import type { Component as C } from 'vue';
 import type { Page } from './interfaces';
 
@@ -32,7 +33,12 @@ const pages: { [key: string]: C } = {
 function navigate(page: Page): void {
   state.page = page;
 }
-
+// on persite les donnees local sur l api si besoins si elle n a rien
+// try {
+// seed('projetproducts');
+// } catch (error) {
+// console.log(error.message);
+// }
 </script>
 
 <style lang="scss">
