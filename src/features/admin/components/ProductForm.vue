@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h3 class="mb-10">Ajouter un article</h3>
-    <form @submit="trySubmit" action.preventDefault="#">
+    <form @submit="trySubmit">
       <div class="d-flex flex-column mb-20">
         <label class="mb-5" for="title">*Titre</label>
         <input
