@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProductInterface } from '../../interfaces';
+import type { ProductInterface } from '../../../../interfaces/Product.interface';
 import ShopProduct from './ShopProduct.vue';
 
 defineProps<{

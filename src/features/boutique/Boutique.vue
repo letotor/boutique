@@ -22,7 +22,7 @@ import Shop from './components/Shop/Shop.vue';
 import Cart from './components/Cart/Cart.vue';
 
 import data from '../../data/product';
-import { ref, computed, reactive } from 'vue';
+import { ref, computed, reactive, watchEffect } from 'vue';
 import { DEFAULT_FILTERS } from './data/filters';
 //eslint-disable-next-line
 import { faker } from '@faker-js/faker';
@@ -120,16 +120,27 @@ const filteredProducts = computed(() =>
   }),
 );
 
-state.products.forEach((product, index) => {
-  product.image = `https://picsum.photos/200.webp?technology=${index}`;
+// state.products.forEach((product, index) => {
+//   product.image = `https://picsum.photos/200.webp?technology=${index}`;
+// });
+watchEffect(async () => {
+  try {
+    const { data } = await (
+      await fetch('http://directus.dgweb.fr:85/items/projetproducts')
+    ).json();
+
+    console.log('Données des produits récupérées :', data);
+
+    if (Array.isArray(data)) {
+      state.products = data;
+    } else {
+      state.products = [data];
+    }
+  } catch (error) {
+    console.error(error);
+  }
 });
-// const products =await( await axios.get("https://restapi.fr/api/projetProducts")).data
-// console.log(products)
-// if (Array.isArray(products)) {
-//   state.products = products;
-// }else{
-//   state.products = [products];
-// }
+
 </script>
 
 <style scoped lang="scss">

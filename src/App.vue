@@ -21,6 +21,7 @@ import { seed } from './features/boutique/data/seed';
 import type { Component as C } from 'vue';
 import type { Page } from './interfaces';
 
+
 const state = reactive<{ page: Page }>({
   page: 'admin',
 });
@@ -33,12 +34,14 @@ const pages: { [key: string]: C } = {
 function navigate(page: Page): void {
   state.page = page;
 }
-// on persite les donnees local sur l api si besoins si elle n a rien
-// try {
-// seed('projetproducts');
-// } catch (error) {
-// console.log(error.message);
-// }
+//on persite les donnees local sur l api si besoins si elle n a rien
+try {
+  // on push les donnees sur la serveur pour les rendre disponible utlterieurement car toute les 24 H les serveurs et les data sont reinitialiser
+  // seed('projetproducts');
+  console.log('seeded desactivated');
+} catch (error: any) {
+  console.log(error.message);
+}
 </script>
 
 <style lang="scss">
@@ -60,7 +63,6 @@ function navigate(page: Page): void {
 .body {
   grid-area: body;
 }
-
 .footer {
   grid-area: footer;
 }

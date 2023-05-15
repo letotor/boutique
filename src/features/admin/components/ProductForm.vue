@@ -18,7 +18,7 @@
         <label class="mb-5" for="image">*Image</label>
         <input type="text" id="image" v-model="image.value.value" />
         <small class="form-error" v-if="image.errorMessage.value">
-          {{ image.errorMessage.value }}
+          {{ image.errorMessage.value }}zz
         </small>
       </div>
       <div class="d-flex flex-column mb-20">
@@ -71,7 +71,7 @@ import { useFormValues } from 'vee-validate';
 import { ref, onMounted, watchEffect } from 'vue';
 
 const firstInput = ref<HTMLInputElement | null>(null);
-
+const textInput = ref(null)
 onMounted(() => {
   firstInput.value?.focus();
   console.info('firstInput', firstInput);

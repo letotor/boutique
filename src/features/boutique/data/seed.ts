@@ -1,4 +1,4 @@
-import data from '../../../data/product'
+import data from '../../../data/product';
 export async function seed(collectionName: string) {
   try {
     const res = await fetch(`https://restapi.fr/api/${collectionName}`, {
