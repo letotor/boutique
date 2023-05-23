@@ -148,7 +148,7 @@ watchEffect(async () => {
   grid-template-areas: 'shop cart';
   grid-template-columns: 75% 25%;
 }
-.gridEmpty {
+.grid-empty {
   grid-template-areas: 'shop ';
   grid-template-columns: 100%;
 }

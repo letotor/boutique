@@ -40,7 +40,7 @@ const emit = defineEmits<{
 <style lang="scss" scoped>
 .scrollable {
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   margin-top: 5px;
   margin-bottom: 5px;
   height: calc(100vh - 96px);
@@ -52,7 +52,6 @@ const emit = defineEmits<{
   }
   &::-webkit-scrollbar-thumb {
     background-color: var(--gray-2);
-    
     border-radius: 10px;
   }
 }
