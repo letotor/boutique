@@ -120,7 +120,8 @@ watchEffect(() => {
 });
 const trySubmit = handleSubmit(async (formValues: any, { resetForm }) => {
   try {
-    await fetch('https://restapi.fr/api/vuetestproducts', {
+   // await fetch('https://restapi.fr/api/vuetestproducts', {
+    await fetch('https://', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

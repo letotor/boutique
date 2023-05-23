@@ -2,10 +2,12 @@
   <div class="app-container">
     <TheHeader @navigate="navigate" class="header" />
     <div class="body">
-      <Component :is="pages[state.page]" :page="state.page">
-        <Boutique />
-        <Admin />
-      </Component>
+      <Suspense>
+        <Component :is="pages[state.page]" :page="state.page">
+          <!-- <Boutique />
+        <Admin /> -->
+        </Component>
+      </Suspense>
     </div>
     <TheFooter class="footer" />
   </div>
@@ -20,7 +22,6 @@ import Admin from './features/admin/Admin.vue';
 import { seed } from './features/boutique/data/seed';
 import type { Component as C } from 'vue';
 import type { Page } from './interfaces';
-
 
 const state = reactive<{ page: Page }>({
   page: 'admin',

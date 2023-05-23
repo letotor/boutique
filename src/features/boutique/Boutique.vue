@@ -126,7 +126,7 @@ const filteredProducts = computed(() =>
 watchEffect(async () => {
   try {
     const { data } = await (
-      await fetch('http://directus.dgweb.fr:85/items/projetproducts')
+      await fetch('http://energieteam.dgweb.fr:8157/items/projetproducts')
     ).json();
 
     console.log('Données des produits récupérées :', data);
@@ -140,7 +140,6 @@ watchEffect(async () => {
     console.error(error);
   }
 });
-
 </script>
 
 <style scoped lang="scss">
