@@ -22,7 +22,7 @@ import Shop from './components/Shop/Shop.vue';
 import Cart from './components/Cart/Cart.vue';
 
 import data from '../../data/product';
-import { ref, computed, reactive, watchEffect } from 'vue';
+import { ref, computed, reactive, watchEffect, watchPostEffect } from 'vue';
 import { DEFAULT_FILTERS } from './data/filters';
 //eslint-disable-next-line
 import { faker } from '@faker-js/faker';
@@ -32,6 +32,7 @@ import type {
   FiltersInterface,
   FilterUpdate,
 } from '../../interfaces/Filter.interface';
+import { fetchProduct } from '../../shared/services/product.service';
 
 const displayTest = ref<string | null>('');
 const state = reactive<{
@@ -44,6 +45,23 @@ const state = reactive<{
   cart: [],
   // on cree une copy de default filters pour ne pas modifier la constante puisque filter est une reference object et non une copie donc si on modifie filter on modifie aussi DEFAULT_FILTERS et on ne veut pas ca
   filters: { ...DEFAULT_FILTERS },
+});
+
+
+watchEffect(async () => {
+  try {
+    const data = await fetchProduct(state.filters);
+
+    console.log('Données des produits récupérées :', data);
+
+    if (Array.isArray(data)) {
+      state.products = data;
+    } else {
+      state.products = [data];
+    }
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 const addProductToCart = (productId: number): void => {
@@ -123,23 +141,9 @@ const filteredProducts = computed(() =>
 // state.products.forEach((product, index) => {
 //   product.image = `https://picsum.photos/200.webp?technology=${index}`;
 // });
-watchEffect(async () => {
-  try {
-    const { data } = await (
-      await fetch('http://energieteam.dgweb.fr:8157/items/projetproducts')
-    ).json();
 
-    console.log('Données des produits récupérées :', data);
 
-    if (Array.isArray(data)) {
-      state.products = data;
-    } else {
-      state.products = [data];
-    }
-  } catch (error) {
-    console.error(error);
-  }
-});
+
 </script>
 
 <style scoped lang="scss">
