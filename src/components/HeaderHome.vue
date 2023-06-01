@@ -28,13 +28,42 @@
         <li class="mr-20"><a href="#"> Inscription </a></li>
         <li><a href="#"> Connexion </a></li>
       </ul>
-      <i class="fa-solid fa-bars show-xs" />
+      <div class="menu-xs-container">
+        <i @click="state.open = !state.open" class="fa-solid fa-bars show-xs" />
+        <Transition>
+          <ul @click="state.open = false" v-if="state.open" class="menu card">
+            <li>
+              <a
+                :class="{ actives: page === 'boutique' }"
+                @click="emit('navigate', 'boutique')"
+                href=" #"
+                >Boutique</a
+              >
+            </li>
+            <li>
+              <a
+                :class="{ actives: page === 'admin' }"
+                @click="emit('navigate', 'admin')"
+                href=" #"
+                >Admin</a
+              >
+            </li>
+            <li><a href="#"> Inscription </a></li>
+            <li><a href="#"> Connexion </a></li>
+          </ul>
+        </Transition>
+      </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { reactive } from 'vue';
 import type { Page } from '../interfaces';
+
+const state = reactive<{ open: boolean }>({
+  open: false,
+});
 const props = defineProps<{ page: Page }>();
 const emit = defineEmits<{
   (e: 'navigate', page: Page): void;
@@ -47,7 +76,7 @@ console.log('HeaderHome', props?.page);
 header {
   background-color: var(--primary-1);
   a {
-    color: var(--text-primary-color);
+    color: var(--text-color);
     cursor: pointer;
     img {
       width: 20px;
@@ -66,6 +95,8 @@ header {
   }
   i {
     color: white;
+    font-size: 20px;
+    cursor: pointer;
 
     @include mixins.sm {
       display: none;
@@ -75,6 +106,29 @@ header {
     @include mixins.xs {
       justify-content: flex-end;
     }
+  }
+  .menu-xs-container {
+    position: relative;
+  }
+  .menu {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    li {
+      padding: 10px;
+    }
+    a {
+      color: #444;
+    }
+  }
+  .v-leave-to,
+  .v-enter-from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  .v-leave-active,
+  .v-enter-active {
+    transition: all 0.3s;
   }
 }
 </style>
