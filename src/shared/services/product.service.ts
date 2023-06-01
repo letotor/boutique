@@ -10,8 +10,7 @@ export async function fetchProduct(
   // if (filter.category !== 'all') {
   //   queryBuilder += `,"category": {"_eq": "${filter.category}" }`;
   // }
-
-  // queryBuilder += '}';
+  queryBuilder += '}';
   // let queryBuilder = `filter[category][_eq]="gamer"`;
   // queryBuilder += '&sort=price:asc';
   queryBuilder += '&limit=20';
@@ -27,7 +26,7 @@ export async function fetchProduct(
     )
   ).json();
 
-  console.log('Données des produits récupérées :', data);
+  console.debug('Données des produits récupérées a partir du fetch :', data);
 
   return data;
 }

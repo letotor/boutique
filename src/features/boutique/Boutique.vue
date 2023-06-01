@@ -69,7 +69,7 @@ watchEffect(async () => {
     state.isLoading = true;
     const data = await fetchProduct(state.filters, state.page);
     state.isLoading = false;
-    console.log('Données des produits récupérées :', data);
+    console.debug('Données des produits récupérées :', data);
 
     if (Array.isArray(data)) {
       state.products = [...state.products, ...data];
