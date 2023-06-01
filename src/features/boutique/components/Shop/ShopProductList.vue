@@ -36,7 +36,7 @@ const emit = defineEmits<{
 }>();
 
 const page = inject(pageKey)!;
-
+console.debug('page', page.value);
 const scrollablediv = ref<HTMLDivElement | null>(null);
 
 watch(page, () => {
