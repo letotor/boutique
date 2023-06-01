@@ -5,7 +5,9 @@
       @update-filter="updateFilter"
       :products="filteredProducts"
       :filters="state.filters"
+      :more-results="state.moreResults"
       @add-product-to-cart="addProductToCart"
+      @inc-page="state.page++"
     />
 
     <Cart
@@ -22,42 +24,60 @@ import Shop from './components/Shop/Shop.vue';
 import Cart from './components/Cart/Cart.vue';
 
 import data from '../../data/product';
-import { ref, computed, reactive, watchEffect, watchPostEffect } from 'vue';
+import { ref, computed, reactive, watchEffect, watch } from 'vue';
 import { DEFAULT_FILTERS } from './data/filters';
 //eslint-disable-next-line
 import { faker } from '@faker-js/faker';
 
-import type { ProductCartInterface, ProductInterface } from './interfaces';
+import type { ProductCartInterface, ProductInterface } from '../../interfaces';
 import type {
   FiltersInterface,
   FilterUpdate,
 } from '../../interfaces/Filter.interface';
 import { fetchProduct } from '../../shared/services/product.service';
+import { pageKey } from '../../shared/injectionKeys/pageKey';
+import { provide } from 'vue';
+import { toRef } from 'vue';
 
 const displayTest = ref<string | null>('');
 const state = reactive<{
   products: ProductInterface[];
   cart: ProductCartInterface[];
   filters: FiltersInterface;
+  page: number;
+  isLoading: boolean;
+  moreResults: boolean;
 }>({
   // products: data,
   products: data,
   cart: [],
   // on cree une copy de default filters pour ne pas modifier la constante puisque filter est une reference object et non une copie donc si on modifie filter on modifie aussi DEFAULT_FILTERS et on ne veut pas ca
   filters: { ...DEFAULT_FILTERS },
+  page: 1,
+  isLoading: true,
+  moreResults: true,
 });
 
+watch([state.filters], () => {
+  state.page = 1;
+  state.products = [];
+});
 
+provide(pageKey, toRef(state, 'page'));
 watchEffect(async () => {
   try {
-    const data = await fetchProduct(state.filters);
-
+    state.isLoading = true;
+    const data = await fetchProduct(state.filters, state.page);
+    state.isLoading = false;
     console.log('Données des produits récupérées :', data);
 
     if (Array.isArray(data)) {
-      state.products = data;
+      state.products = [...state.products, ...data];
+      if (data?.length < 20) {
+        state.moreResults = false;
+      }
     } else {
-      state.products = [data];
+      state.products = [...state.products, data];
     }
   } catch (error) {
     console.error(error);
@@ -123,13 +143,12 @@ const cartEmpty = computed(() => state.cart.length === 0);
 const filteredProducts = computed(() =>
   state.products.filter((product) => {
     if (
-      product.title
-        .toLowerCase()
-        .startsWith(state.filters.search.toLowerCase()) &&
-      product.price >= state.filters.priceRange[0] &&
-      product.price <= state.filters.priceRange[1] &&
-      (product.category === state.filters.category ||
-        state.filters.category === 'all')
+      product.title.toLowerCase().startsWith(state.filters.search.toLowerCase())
+      //&&
+      // product.price >= state.filters.priceRange[0] &&
+      // product.price <= state.filters.priceRange[1] &&
+      // (product.category === state.filters.category ||
+      //   state.filters.category === 'all')
     ) {
       return true;
     } else {
@@ -141,9 +160,6 @@ const filteredProducts = computed(() =>
 // state.products.forEach((product, index) => {
 //   product.image = `https://picsum.photos/200.webp?technology=${index}`;
 // });
-
-
-
 </script>
 
 <style scoped lang="scss">

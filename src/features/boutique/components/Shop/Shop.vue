@@ -9,7 +9,9 @@
     <ShopProductList
       class="flex-fill scrollable"
       @add-product-to-cart="emit('addProductToCart', $event)"
+      @inc-page="emit('incPage')"
       :products="products"
+      :more-results="moreResults"
     />
     <!-- <ConnexionShop /> -->
   </div>
@@ -17,21 +19,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import ShopProductList from './ShopProductList.vue';
-import {
+import type {
+  ProductInterface,
   FilterUpdate,
   FiltersInterface,
-} from '../../interfaces/Filter.interface';
-import type { ProductInterface } from '../../interfaces';
+} from '../../../../interfaces';
 import ShopFilters from './ShopFilters.vue';
 
 defineProps<{
   products: ProductInterface[];
   filters: FiltersInterface;
+  moreResults: boolean;
 }>();
 
 const emit = defineEmits<{
   (e: 'addProductToCart', productId: number): void;
   (e: 'updateFilter', updateFilter: FilterUpdate): void;
+  (e: 'incPage'): void;
 }>();
 
 // console.log('Shop', emit.toString);

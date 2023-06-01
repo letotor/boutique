@@ -39,7 +39,7 @@ function navigate(page: Page): void {
 try {
   // on push les donnees sur la serveur pour les rendre disponible utlterieurement car toute les 24 H les serveurs et les data sont reinitialiser
   // seed('projetproducts');
-  // seed40articles('vueprojectproducts');  
+  // seed40articles('vueprojectproducts');
   console.log('seeded desactivated');
 } catch (error: any) {
   console.log(error.message);

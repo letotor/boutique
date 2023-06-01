@@ -11,16 +11,16 @@
     "prettier": "prettier --ext .vue --write . --ignore-path .gitignore"
   },
   "dependencies": {
-    "@faker-js/faker": "^7.4.0",
-    "@vee-validate/zod": "^4.8.6",
-    "axios": "^0.27.2",
+    "@faker-js/faker": "^8.0.2",
+    "@vee-validate/zod": "^4.9.6",
+    "axios": "^1.4.0",
     "faker": "^6.6.6",
-    "vee-validate": "^4.8.6",
-    "vue": "^3.2.33",
+    "vee-validate": "^4.9.6",
+    "vue": "^3.3.4",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.4.0",
+    "@faker-js/faker": "^8.0.2",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.11.27",
     "@vitejs/plugin-vue": "^2.3.1",
