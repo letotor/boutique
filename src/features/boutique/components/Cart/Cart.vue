@@ -105,7 +105,7 @@ i {
   background-color: white;
   color: var(--white);
   border-radius: 10px;
-  width: 450px;
+  
   position: absolute;
   bottom: 0px;
   right: 0px;
