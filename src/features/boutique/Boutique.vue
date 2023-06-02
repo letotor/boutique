@@ -1,5 +1,5 @@
 <template>
-  <div class="boutique-container" :class="{ 'grid-empty': cartEmpty }">
+  <div class="d-flex flex-column">
     <Shop
       class="shop"
       @update-filter="updateFilter"
@@ -12,7 +12,6 @@
 
     <Cart
       v-if="!cartEmpty"
-      class="cart"
       :cart="state.cart"
       @remove-product-from-cart="removeProductFromCart"
     />
@@ -163,19 +162,4 @@ const filteredProducts = computed(() =>
 </script>
 
 <style scoped lang="scss">
-.boutique-container {
-  display: grid;
-  grid-template-areas: 'shop cart';
-  grid-template-columns: 75% 25%;
-}
-.grid-empty {
-  grid-template-areas: 'shop ';
-  grid-template-columns: 100%;
-}
-
-.cart {
-  grid-area: cart;
-  border-left: var(--border);
-  background-color: white;
-}
 </style>
