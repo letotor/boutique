@@ -7,7 +7,6 @@
     <div class="d-flex flex-row align-items-center flex-fill actions-container">
       <ul class="d-flex flex-row align-items-center flex-fill hide-xs">
         <li class="mr-20">
-          <pre>page :{{ props.page }}</pre>
           <a
             :class="{ actives: page === 'boutique' }"
             @click="emit('navigate', 'boutique')"
@@ -64,11 +63,10 @@ import type { Page } from '../interfaces';
 const state = reactive<{ open: boolean }>({
   open: false,
 });
-const props = defineProps<{ page: Page }>();
+
 const emit = defineEmits<{
   (e: 'navigate', page: Page): void;
 }>();
-console.log('HeaderHome', props?.page);
 </script>
 
 <style lang="scss" scoped>
